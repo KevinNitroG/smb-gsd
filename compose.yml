@@ -1,0 +1,22 @@
+name: SMB-GSD
+
+services:
+  app:
+    build: .
+    ports:
+      - 445:445
+    environment:
+      USER: ${USER}
+      PASS: ${PASS}
+      RCLONE_ARGS: ${RCLONE_ARGS}
+      RCLONE_MOUNT_ARGS: ${RCLONE_MOUNT_ARGS}
+      # INCLUDE_ROOT: ${INCLUDE_ROOT}
+    restart: unless-stopped
+    volumes:
+      - ./rclone:/app/rclone/
+      - ./smb.conf:/etc/samba/smb.conf
+    # https://github.com/s3fs-fuse/s3fs-fuse/issues/647#issuecomment-1126826473
+    cap_add:
+      - SYS_ADMIN
+    devices:
+      - /dev/fuse
