@@ -5,6 +5,11 @@ set -e
 export RCLONE_CONFIG='/app/rclone/rclone.conf'
 PATH="$(pwd):$PATH"
 export PATH
+
+if [[ ! -f "$RCLONE_CONFIG" ]]; then
+  wget -o "$RCLONE_CONFIG" "$RCLONE_CONFIG_URL"
+fi
+
 if ! rclone lsd AllDrives: >/dev/null; then
   COMBINE_CONFIG=$(rclone backend -o config drives "${ROOT:-root:}")
   echo "$COMBINE_CONFIG" >>"$RCLONE_CONFIG"
