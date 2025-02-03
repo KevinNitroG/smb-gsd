@@ -7,7 +7,7 @@ PATH="$(pwd):$PATH"
 export PATH
 
 if [[ ! -f "$RCLONE_CONFIG" ]]; then
-  mkdir -p "$RCLONE_CONFIG"
+  mkdir -p "${RCLONE_CONFIG%/*}"
   wget -O "$RCLONE_CONFIG" "$RCLONE_CONFIG_URL"
 fi
 
