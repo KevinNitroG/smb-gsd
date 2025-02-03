@@ -16,6 +16,6 @@ echo "$all_drives" >>"$RCLONE_CONFIG"
 
 sleep 5 # Let rclone rest, update sth
 
-rclone ${RCLONE_ARGS:+$RCLONE_ARGS} mount --cache-dir=./cache AllDrives: /storage --allow-non-empty --daemon --vfs-cache-mode=minimal ${RCLONE_MOUNT_ARGS:+$RCLONE_MOUNT_ARGS}
+rclone ${RCLONE_ARGS:+$RCLONE_ARGS} mount --cache-dir=./cache AllDrives: /storage --allow-non-empty --vfs-cache-mode=minimal ${RCLONE_MOUNT_ARGS:+$RCLONE_MOUNT_ARGS} &
 
 /sbin/tini -- /usr/bin/samba.sh
