@@ -10,6 +10,7 @@ services:
       PASS: ${PASS}
       RCLONE_ARGS: ${RCLONE_ARGS}
       RCLONE_MOUNT_ARGS: ${RCLONE_MOUNT_ARGS}
+      RCLONE_CONFIG_URL: ${RCLONE_CONFIG_URL}
       # INCLUDE_ROOT: ${INCLUDE_ROOT}
     restart: unless-stopped
     volumes:

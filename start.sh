@@ -7,7 +7,7 @@ PATH="$(pwd):$PATH"
 export PATH
 
 if [[ ! -f "$RCLONE_CONFIG" ]]; then
-  wget -o "$RCLONE_CONFIG" "$RCLONE_CONFIG_URL"
+  wget -O "$RCLONE_CONFIG" "$RCLONE_CONFIG_URL"
 fi
 
 if ! rclone lsd AllDrives: >/dev/null; then
